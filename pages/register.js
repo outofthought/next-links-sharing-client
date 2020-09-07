@@ -47,8 +47,8 @@ const Register = () => {
                 //     })
                 buttonText: 'Submitted'
             })
-        } catch (errror) {
-            setState({ ...state, buttonText: 'Register', error: error.data.error })
+        } catch (error) {
+            setState({ ...state, buttonText: 'Register', error: error.response.data.error })
         }
     }
 
