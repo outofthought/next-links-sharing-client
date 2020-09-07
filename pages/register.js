@@ -1,7 +1,8 @@
 import Layout from "../components/Layout"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { API, DOMAIN } from '../config'
+import { isAuth } from '../helpers/auth'
 
 
 // console.log('API', API, DOMAIN)
@@ -17,6 +18,11 @@ const Register = () => {
         buttonText: 'Register'
     })
     const { name, email, password, error, success, buttonText } = state
+
+    useEffect(() => {
+        isAuth() && Router.push('/'); // check if there is any isAuth()
+    }, [])
+
     const handleChange = (name) => (event) => {
 
         setState({ ...state, [name]: event.target.value, error: '', success: '', buttonText: 'Register' })
