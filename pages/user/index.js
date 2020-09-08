@@ -5,9 +5,9 @@ import { getCookie } from '../../helpers/auth'
 
 const User = ({ user }) => <Layout>{JSON.stringify(user)}</Layout>
 
-User.getInitialProps = async () => {
-    const token = getCookie('token')
-    console.log('TOKEN:', token)
+User.getInitialProps = async (context) => {
+    const token = getCookie('token', context.req)
+    // console.log('TOKEN:', token)
 
 
     try {
@@ -27,6 +27,8 @@ User.getInitialProps = async () => {
 
 }
 export default User
+
+
 
 
 // const User = ({ todos }) => {
