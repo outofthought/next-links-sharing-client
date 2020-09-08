@@ -47,7 +47,6 @@ export const authenticate = (response, next) => {
     next()
 }
 
-//access user info from localStorage
 export const isAuth = () => {
     if (process.browser) {
         const cookieChecked = getCookie('token')

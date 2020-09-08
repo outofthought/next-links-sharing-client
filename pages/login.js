@@ -19,27 +19,27 @@ const Login = () => {
         isAuth() && Router.push('/'); // check if there is any isAuth()
     }, [])
 
-    const { email, password, error, success, buttonText } = state;
+    const { email, password, error, success, buttonText } = state
 
     const handleChange = name => e => {
-        setState({ ...state, [name]: e.target.value, error: '', success: '', buttonText: 'Login' });
+        setState({ ...state, [name]: e.target.value, error: '', success: '', buttonText: 'Login' })
     };
 
     const handleSubmit = async e => {
         e.preventDefault();
-        setState({ ...state, buttonText: 'Logging in' });
+        setState({ ...state, buttonText: 'Logging in' })
         try {
             const response = await axios.post(`${API}/login`, {
                 email,
                 password
             });
-            console.log(response); // data > token / user
+            console.log('TOKEN_ON_THE_CLIENT:', response.data.token); // data > token / user
             authenticate(response, () =>
                 isAuth() && isAuth().role === 'admin' ? Router.push('/admin') : Router.push('/user')
             );
         } catch (error) {
             console.log(error);
-            setState({ ...state, buttonText: 'Login', error: error.response.data.error });
+            setState({ ...state, buttonText: 'Login', error: error.response.data.error })
         }
     };
 

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { API, DOMAIN } from '../config'
 import { isAuth } from '../helpers/auth'
+import Router from 'next/router';
 
 
 // console.log('API', API, DOMAIN)
